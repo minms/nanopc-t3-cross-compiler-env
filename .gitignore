@@ -2,3 +2,4 @@
 .idea
 src/ffmpeg
 src/opencv
+src/ffmpeg-3.4.7

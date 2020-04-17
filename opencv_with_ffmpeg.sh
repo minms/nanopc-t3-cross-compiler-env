@@ -21,6 +21,20 @@ buildFFmpeg() {
 	make -j8 && make install
 }
 
+buildFFmpeg347() {
+	echo "start build ffmpeg aarch64 version"
+	cd $sourcePath
+	rm -rf ffmpeg-3.4.7
+	tar -zxf ffmpeg-3.4.7.tar.gz
+	cd ffmpeg-3.4.7
+	./configure \
+		--prefix=$crossEnvPath/ffmpeg-3.4.7 \
+		--disable-static --enable-shared --disable-x86asm \
+		--enable-cross-compile --arch=aarch64 --target-os=linux --cross-prefix=aarch64-linux- \
+		--enable-pthreads --enable-avresample --enable-ffplay
+	make -j8 && make install
+}
+
 buildOpenCV(){
 	cd $sourcePath
 
@@ -47,7 +61,9 @@ buildOpenCV(){
 	make -j8 && make install
 }
 
+buildFFmpeg347
+
 # buildFFmpeg
 
-buildOpenCV
+# buildOpenCV
 
